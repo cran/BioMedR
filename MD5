@@ -1,4 +1,4 @@
-f0746c88ceb666b4e3bf8dfefafeb868 *DESCRIPTION
+ecda97b8150f72d445a69b3568161848 *DESCRIPTION
 eb7c414ea959aa1b26ee53a7bb38480c *NAMESPACE
 5888d6e5f42ceb56d6bbb5d4decebd65 *NEWS
 c1352e1b90b2c511c6e3f77091458100 *R/001-BioMedR-package.R
@@ -6,8 +6,8 @@ a1f8bb51cddba9514f4cef3513b1089c *R/1001-clusterMDS.R
 acf5e2fdd6d4b3b2ed205652a109974a *R/1002-clusterCMP.R
 a7e79a5c5303a372bd3047115b9a143b *R/1003-clusterJarvis-Patrick.R
 336118a8b089d8057857b871040aa232 *R/1004-clusterStat.R
-f73c6b46daca33fea4149bf96ae83c38 *R/101-getDrug.R
-1ea5d8ccd79788b1bcc3a8f3956bba45 *R/102-getProt.R
+4ce942fb6d63a0e2e1d55070005c1d25 *R/101-getDrug.R
+365e026555ecc67b20045b98d62f3276 *R/102-getProt.R
 16307d3536172448d01661d4c3c4a9ee *R/103-getDNAGenbank.R
 0516dc0f285f8c8c932bdcf5b9d1cbc8 *R/1101-randomForest.R
 974a6f1c1dd84787fb01856464e7d5e1 *R/1102-PLS.R
@@ -23,7 +23,7 @@ d80e9e51749e16ce4421858a023a7e93 *R/417-extractDrugChiChain.R
 f8deb4b9c9348ff331662a3290a1fa1c *R/424-extractDrugGravitationalIndex.R
 c07c854e3da008716abdce41bd91fbdf *R/427-extractDrugHybridizationRatio.R
 bb317cf67d9de0fb974729c1f813b264 *R/428-extractDrugIPMolecularLearning.R
-e655bef4e4b9c0b19024cfdea4c1bb22 *R/429-extractDrugKappaShapeIndices.R
+ee1c0285fbf452c5d80b5f4c1ec5cd8d *R/429-extractDrugKappaShapeIndices.R
 0736dfbeea622fb251dceb228dedc1fa *R/430-extractDrugKierHallSmarts.R
 deed8a8e49be18257996af1565705873 *R/436-extractDrugMannholdLogP.R
 f543cca8a0df4207bce3a30765b2c25b *R/445-extractDrugWHIM.R
@@ -275,7 +275,7 @@ d2089b3740df5801c8da71d49179b278 *man/extrDrugHybridizationRatio.Rd
 64b0880c6760918292b1d66c7b0416e3 *man/extrDrugIPMolecularLearning.Rd
 93c399d874a6d93d3366e1ee7485873b *man/extrDrugKR.Rd
 81829e7d8d9c5ef76e71c590dfb06c80 *man/extrDrugKRComplete.Rd
-10d5b30156415a8d9178131c330c72d4 *man/extrDrugKappaShapeIndices.Rd
+651f1dd617f90d20f2fefd05987ac1e5 *man/extrDrugKappaShapeIndices.Rd
 9390b55b89dfc55d438af3c1534d2e1f *man/extrDrugKierHallSmarts.Rd
 8aa26958032d27df0f5a4f12c3d266e8 *man/extrDrugMACCS.Rd
 6a08947a6e1a8243be8c4be1f6a29cf8 *man/extrDrugMACCSComplete.Rd

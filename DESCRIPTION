@@ -1,7 +1,7 @@
 Package: BioMedR
 Type: Package
-Version: 1.1.1
-Date: 2018-12-21
+Version: 1.1.2
+Date: 2019-04-02
 Title: Generating Various Molecular Representations for Chemicals,
         Proteins, DNAs, RNAs and Their Interactions
 Description: Calculating 293 chemical descriptors and 14 kinds of chemical fingerprints, 9920 protein descriptors based on protein sequences, more than 6000 DNA/RNA descriptors from nucleotide sequences, and six types of interaction descriptors using three different combining strategies. 
@@ -22,6 +22,6 @@ biocViews: Software, DataImport, DataRepresentation, FeatureExtraction,
         GraphAndNetwork, SystemsBiology
 NeedsCompilation: no
 RoxygenNote: 6.1.1
-Packaged: 2019-01-15 07:07:13 UTC; root
+Packaged: 2019-04-02 11:58:47 UTC; root
 Repository: CRAN
-Date/Publication: 2019-01-15 09:50:06 UTC
+Date/Publication: 2019-04-04 13:10:07 UTC

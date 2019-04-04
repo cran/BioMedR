@@ -244,7 +244,7 @@ BMgetProtPDBRCSBPDB = function (id, parallel = 5) {
   # example id : 4HHB
   # example url: http://www.rcsb.org/pdb/files/4HHB.pdb
   
-  pdbURL = paste0('http://www.rcsb.org/pdb/files/', id, '.pdb')
+  pdbURL = paste0('http://files.rcsb.org/view/', id, '.pdb')
   
   pdbTxt = getURLAsynchronous(url = pdbURL, perform = parallel)
   

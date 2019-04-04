@@ -29,7 +29,6 @@ Descriptor that Calculates Kier and Hall Kappa Molecular Shape Indices
 \details{
 Kier and Hall Kappa molecular shape indices compare the molecular graph 
 with minimal and maximal molecular graphs; 
-see \url{http://www.chemcomp.com/journal/descr.htm#KH} 
 for details:
 "they are intended to capture different aspects of molecular shape. 
 Note that hydrogens are ignored. In the following description, 
