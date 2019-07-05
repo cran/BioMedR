@@ -559,28 +559,35 @@ head(estate)
 The MACCS fingerprint uses a dictionary of MDL keys, which contains a set of 166 mostly common substructure features. These are referred to as the MDL public MACCS keys.
 
 \begin{CodeInput}
-maccs = extrDrugEstate(mol)
+maccs = extrDrugMACCS(mol)
 head(maccs)
 \end{CodeInput}
 
 \begin{CodeInput}
-## $`79`
-##  [1]  7  9 12 13 16 17 18 31 34 35 37
+## $`166`
+##  [1]  24  49  56  57  63  70  71  89  91  94  98 102 105 113 115 119 122 123 124 125 127
+## [22] 130 132 133 135 136 137 139 140 143 144 145 146 148 150 152 154 155 156 157 158 159
+## [43] 160 161 162 163 164 165
 ##
-## $`79`
-## [1]  7 12 16 17 24 34 35
+## $`166`
+## [1]  92 110 113 117 127 131 133 135 139 143 151 152 154 156 157 158 159 160 161 162 163
+## [22] 164 165
 ##
-## $`79`
-## [1]  7 12 16 17 24 35
+## $`166`
+## [1]  92 110 117 133 135 151 154 156 158 160 161 162 163 164 165
 ##
-## $`79`
-## [1]  7 16 17 21 24 29 35 51 53
+## $`166`
+## [1]  32  33  36  47  51  52  55  58  59  60  61  64  65  67  69  73  77  79  80  81  83
+## [22]  84  88  92  94  95  96  97 102 106 110 112 117 120 121 124 130 131 133 135 136 137
+## [43] 142 146 148 151 154 156 158 159 160 161 162 164 165
 ##
-## $`79`
-## [1]  7  9 12 13 16 17 24 35 53
+## $`166`
+## [1]  32  33  37  43  51  55  58  59  60  61  64  67  69  73  77  81  88  89  90  91  94
+## [22]  97 102 104 106 110 111 112 117 118 124 129 130 131 133 136 140 142 145 146 147 148
+## [43] 151 152 154 156 158 159 160 161 162 163 164 165
 ##
-## $`79`
-## [1]  7 16 24 34 35
+## $`166`
+## [1]  24  68  69  71  72  92  94 102 110 117 124 131 139 151 154 156 158 159 160 161 164
 \end{CodeInput}
 
 \code{extrDrugMACCS} and \code{extrDrugEstate} return a list, each component represents one of the molecules, each element in the component represents the index of which element in the fingerprint is 1. Each component's name is the length of the fingerprints.
@@ -2426,10 +2433,7 @@ Self-organizing maps \citep{kohonen2001self} tackle the problem in a way similar
 There is an example: we collected 80 drugs binding to bcl2 protein and 300 compounds unbinding to bcl2 protein. Firstly, we analyze the global character for total 380 compounds and maped them to 5 $\times$ 5 lattices. Secondly, we analyzed the structral characters for 80 drugs and maped them to these 5 $\times$ 5 lattices and counted the drugs in each lattice. From the result, we can choose some negative compouds for bcl2 protein with chemical structures similar to its positive drugs.  The R code to generate the plot is as follows:
 
 \begin{CodeInput}
-require(kohonen)
-data(bcl)
-bcl2 = scale(bcl)
-som.bcl <- som(bcl2, grid = somgrid(5, 5, "rectangular"), rlen = 100)
+data(som.bcl)
 
 idx = unique(som.bcl$unit.classif[1:80])
 bgcols <- c("gray", "lightgreen")
@@ -2647,7 +2651,8 @@ require(pls)
 require(randomForest)
 
 # feature selection
-result <- rf.fs(x, y)
+# this step may take several minutes, please wait!
+result <- rf.fs(x, y, scale = FALSE, step = -1)
 with(result, plot(n.var, error.cv, type = "l", lwd = 2))
 \end{CodeInput}
 
@@ -2666,7 +2671,7 @@ xtr = x[, order(result$res[[75]], decreasing = T)[1:17]]
 
 \begin{CodeInput}
 # split training and test set
-seed(1002)
+set.seed(1002)
 index = sample(1:1096, 872)
 trainX = xtr[index, ]
 trainy = y[index]
@@ -2688,7 +2693,7 @@ rf$Q2
 \end{CodeInput}
 
 \begin{CodeOutput}
-## [1,] 0.8286205
+## [1,] 0.8130789
 \end{CodeOutput}
 
 \begin{CodeInput}
@@ -2696,7 +2701,7 @@ pls$Q2
 \end{CodeInput}
 
 \begin{CodeOutput}
-## [1] 0.6849623
+## [1] 0.6363464
 \end{CodeOutput}
 
 \begin{CodeInput}
@@ -2940,7 +2945,7 @@ We could do parallelized drug molecular similarity search with the \code{searchD
 rank1 = searchDrug(mol, moldb, cores = 4, method = 'fp', 
                    fptype = 'maccs', fpsim = 'tanimoto')
 rank2 = searchDrug(mol, moldb, cores = 4, method = 'fp', 
-                   fptype = 'fp2', fpsim = 'cosine')
+                   fptype = 'standard', fpsim = 'cosine')
 \end{CodeInput}
 
 The returned search result is stored as a numerical vector, each element's name is the molecule number in the database, and the value is the similarity value between the query molecule and this molecule. We shall print the top search results here:
@@ -3010,7 +3015,7 @@ For the computed similarity matrix \code{simmat}, we will try to do hierarchical
 \begin{CodeInput}
 mol.hc = hclust(as.dist(1 - simmat), method = 'ward.D')
 
-require(ape)  # for tree-like visualization
+require(ape)  # for tree-like visualization, if not please install.
 clus5 = cutree(mol.hc, 5)  # cut dendrogram into 5 clusters
 
 # generate colors
@@ -3032,7 +3037,7 @@ The clustering result for these molecules is shown in figure \ref{fig:ex4-1}.
 
 \begin{CodeInput}
 # Clustering with other algorithms
-require(gplots)
+require(gplots) # if not please install.
 data(sdfbcl)
 apbcl = convSDFtoAP(sdfbcl)
 dummy = clusterCMP(db = apbcl, cutoff = 0, save.distances = 'distmat.rda', 
@@ -3320,18 +3325,29 @@ Ten generated negative sets were used in \cite{cao2012large}, here we only use o
 we will download the target protein sequences (in FASTA format) and drug molecule (in SMILES format) from the KEGG database, in parallel:
 
 \begin{CodeInput}
-gpcr   = read.table(system.file('vignettedata/GPCR.csv', package = 'BioMedR'), 
-                    header = FALSE, as.is = TRUE)
+require(BioMedR)
+
+gpcr = read.table(system.file('vignettedata/GPCR.csv', package = 'BioMedR'),
+                  header = FALSE, as.is = TRUE)
+
 protid = unique(gpcr[, 1])
 drugid = unique(gpcr[, 2])
-
 protseq = BMgetProtSeqKEGG(protid, parallel = 5)
-drugseq = BMgetDrugSmiKEGG(drugid, parallel = 5)
 
-x0.prot = cbind(t(sapply(unlist(protseq), extrProtMoreauBroto)), 
+drugseq = c()
+for (id in 1:length(drugid)) {
+  drugseq[id] = BMgetDrugSmiKEGG(drugid[id])
+}
+
+# if the network environment is not good, use the following code instead.
+# protseq = readFASTA(system.file('vignettedata/GPCR_seq.fasta', package = 'BioMedR'))
+# drugseq = as.vector(read.table(system.file('vignettedata/GPCR_smi.txt', 
+# package = 'BioMedR'), col.names = 'SMILES')) 
+
+x0.prot = cbind(t(sapply(unlist(protseq), extrProtMoreauBroto)),
                 t(sapply(unlist(protseq), extrProtCTDC)))
-
-x0.drug = cbind(extrDrugGraphComplete(readMolFromSmi(textConnection(drugseq))), 
+                
+x0.drug = cbind(extrDrugGraphComplete(readMolFromSmi(textConnection(drugseq))),
                 extrDrugPubChemComplete(readMolFromSmi(textConnection(drugseq))))
 \end{CodeInput}
 
@@ -3345,13 +3361,14 @@ x.drug = matrix(NA, nrow = nrow(gpcr), ncol = ncol(x0.drug))
 for (i in 1:nrow(gpcr)) x.prot[i, ] = x0.prot[which(gpcr[, 1][i] == protid), ]
 for (i in 1:nrow(gpcr)) x.drug[i, ] = x0.drug[which(gpcr[, 2][i] == drugid), ]
 
-y = as.factor(c(rep('pos', nrow(gpcr)/2), rep('neg', nrow(gpcr)/2)))
+y = as.factor(c(rep('1', nrow(gpcr)/2), rep('0', nrow(gpcr)/2)))
 \end{CodeInput} 
 
 Generate drug-target interaction descriptors using \code{getCPI()}.
 
 \begin{CodeInput}
 x = getCPI(x.prot, x.drug, type = 'combine')
+colnames(x) = paste('CCI', 1:dim(x)[2], sep = '_')
 \end{CodeInput}
 
 Train a random forest classification model with 5-fold repeated CV:
@@ -3359,42 +3376,52 @@ Train a random forest classification model with 5-fold repeated CV:
 \begin{CodeInput}
 require(caret)
 x = x[, -nearZeroVar(x)]
-# cross-validation settings
-ctrl = trainControl(method = 'cv', number = 5, repeats = 10, 
-                    classProbs = TRUE, 
-                    summaryFunction = twoClassSummary)
 
-# train a random forest classifier
+# training set split
+set.seed(20180808)
+split_index = createDataPartition(y, p = 0.75, list = FALSE)
+train_x = x[split_index, ]
+train_y = y[split_index]
+test_x = x[-split_index, ]
+test_y = y[-split_index]
+
+# cross-validation 
 require(randomForest)
-set.seed(1006)
-rf.fit = train(x, y, method = 'rf', trControl = ctrl,
-               metric = 'ROC', preProc = c('center', 'scale'))
+cv_result = rf.cv(train_x, train_y, cv.fold = 5, type = 'classification',  
+                 trees = 500, mtry = 30)
+                 
+# train a random forest classifier
+rf.fit = randomForest(x = train_x, y = train_y, ntree = 500, 
+                      mtry = 30, importance = TRUE)
+
 \end{CodeInput}
 
-Print the cross-validation result:
-
-\begin{CodeInput}
-print(rf.fit)
-\end{CodeInput}
-
-\begin{CodeOutput}
-
-\end{CodeOutput}
 
 Predict on the training set (for demonstration purpose only) and plot ROC curve.
 
 \begin{CodeInput}
-rf.pred = predict(rf.fit$finalModel, x, type = 'prob')[, 1]
+# Predict on the test set
+pre_res = predict(rf.fit, newdata = test_x, type = 'prob')[, 2]
 
 require(pROC)
-plot(smooth(roc(y, rf.pred)), col = '#0080ff', grid = TRUE, print.auc = TRUE)
+# plot the CV result and test result
+require(RColorBrewer)
+pal = brewer.pal(3, 'Set1')
+opar <- par(no.readonly = TRUE)
+par(mfrow=c(1,2))
+plot.roc(train_y, cv_result$prob[,1], col = pal[2], grid = TRUE,
+         print.auc = TRUE, main = 'Cross Validation')
+plot.roc(test_y, pre_res, col = pal[1], grid = TRUE, print.auc = TRUE,
+         main = 'prediction')
+par(opar)
+
 \end{CodeInput}
 
 The ROC curve is shown in figure \ref{fig:ex7-2}.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.4\textwidth]{fig/ex7-2.pdf}
+\includegraphics[width=0.85\textwidth]{fig/ex7-2.pdf}
 \caption{ROC curve for predicting on the training set of the GPCR drug-target interaction dataset using random forest} \label{fig:ex7-2}
 \end{figure}
 

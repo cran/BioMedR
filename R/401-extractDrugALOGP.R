@@ -198,7 +198,7 @@ extrDrugHBondAcceptorCount = function (molecules, silent = TRUE) {
 #' 
 #' @details This descriptor calculates the number of hydrogen bond donors using 
 #' a slightly simplified version of the PHACIR atom types 
-#' (\url{http://www.rguha.net/code/java/cdkdesc.html}). 
+#' (\url{https://www.ncbi.nlm.nih.gov/pubmed/12653513}). 
 #' The following groups are counted as hydrogen bond donors:
 #' \itemize{
 #' \item Any-OH where the formal charge of the oxygen is non-negative 
@@ -240,7 +240,7 @@ extrDrugHBondDonorCount = function (molecules, silent = TRUE) {
 #' @description Descriptor that Calculates the Number Failures of the Lipinski's Rule Of Five
 #'  
 #' @details This descriptor calculates the number failures of the Lipinski's Rule Of Five:
-#' \url{https://en.wikipedia.org/wiki/Lipinski\%27s_Rule_of_Five}.
+#' \url{https://www.ncbi.nlm.nih.gov/pubmed/24981612}.
 #' 
 #' @keywords extrDrugRuleOfFive Lipinski Rule Five
 #'

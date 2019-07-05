@@ -1,11 +1,11 @@
-ecda97b8150f72d445a69b3568161848 *DESCRIPTION
-eb7c414ea959aa1b26ee53a7bb38480c *NAMESPACE
-5888d6e5f42ceb56d6bbb5d4decebd65 *NEWS
+e8febe3d8607e37156133c656c01a3e2 *DESCRIPTION
+3a082bf672322b5efefd9c2e6349e95d *NAMESPACE
 c1352e1b90b2c511c6e3f77091458100 *R/001-BioMedR-package.R
 a1f8bb51cddba9514f4cef3513b1089c *R/1001-clusterMDS.R
-acf5e2fdd6d4b3b2ed205652a109974a *R/1002-clusterCMP.R
+23d4aa826ab2f66e0f8a6d856acc4ea0 *R/1002-clusterCMP.R
 a7e79a5c5303a372bd3047115b9a143b *R/1003-clusterJarvis-Patrick.R
 336118a8b089d8057857b871040aa232 *R/1004-clusterStat.R
+36957454bfdb44d6fd695d423af9f6ca *R/1006-clusterPlotSOMmap.R
 4ce942fb6d63a0e2e1d55070005c1d25 *R/101-getDrug.R
 365e026555ecc67b20045b98d62f3276 *R/102-getProt.R
 16307d3536172448d01661d4c3c4a9ee *R/103-getDNAGenbank.R
@@ -13,7 +13,7 @@ a7e79a5c5303a372bd3047115b9a143b *R/1003-clusterJarvis-Patrick.R
 974a6f1c1dd84787fb01856464e7d5e1 *R/1102-PLS.R
 3a8d6cdea6d2abe3f9fc054269530e6a *R/1103-rffs.R
 a33560bdf8ff8d16727ab367264aebf6 *R/400-extractDrugAIO.R
-365d6338185da8ad87b55eb4a68e41c3 *R/401-extractDrugALOGP.R
+73638cdd80e5269bf865250e733f3cad *R/401-extractDrugALOGP.R
 f44e3a216f2808eae13a1278034eb501 *R/404-extractDrugAminoAcidCount.R
 aa14330684817b05e1259428430af17f *R/408-extractDrugAutocorrelationCharge.R
 533f22430b650d0371ac6163975b1086 *R/411-extractDrugBCUT.R
@@ -34,7 +34,7 @@ bdda043de5249a7c5e141c1d2e46f293 *R/473-extractDrugGraph.R
 17d28212e4d8ea7f243a348dbd835644 *R/475-extractDrugMACCS.R
 78558ea578300b76ce16ee6058802fd6 *R/476-extractDrugEstate.R
 371900b961620c0104ae11558be9e544 *R/477-extractDrugPubChem.R
-f15cf341f82c5047b33162307b1fc5d6 *R/478-extractDrugKR.R
+cc702ad987a63d55634e239eaa20606d *R/478-extractDrugKR.R
 348a70508421ad158dc837aa32bd64fc *R/479-extractDrugShortestPath.R
 66e2407ea48086f39d969802fd913e4f *R/485-extractDrugAP.R
 709faa31c75035dbfbae9475c9f9519f *R/501-extractProtAAC.R
@@ -97,7 +97,7 @@ b61beee99c2af2107998180c21bb4bce *R/904-calcProtSeqSim.R
 b2ae58752606ce05ce54cbc3b9dc77ca *R/906-parSeqSim.R
 073402304a26f6835d2c6dea01f911e6 *R/907-parGOSim.R
 50ccd7322aa49d071841cbaabedd1b93 *R/BioMedR-datalist.R
-94e25ce67835419436c79b997b740ea5 *README
+0eafdac5aa527376c16db48ecd02a043 *README
 74fd2419e84eb552d3d7bf73b5f12180 *data/AA2DACOR.rda
 5b7c6f94b51a6cc85f679be46f8ca65a *data/AA3DMoRSE.rda
 950a7207428adbf07025b3ea572ca17e *data/AAACF.rda
@@ -137,6 +137,7 @@ fe761e0c115a58ab00a61ad6c4f8801e *data/AAindex.rda
 9d31251d8e96731789c746a6787ef4bf *data/atomprop.rda
 9968d7e09821b3cf85b9f4e420e8a85a *data/bcl.rda
 90a608b2bdd80ddb5674325ed5367abf *data/sdfbcl.rda
+372c5305209d7d64eab4fa654f45bf2e *data/som.bcl.rda
 3caa00c25f63b08e3ad881fa22b1abab *inst/compseq/DB00859.sdf
 9cdd6755d2326e4dab02fdb8176f6e37 *inst/compseq/DB00860.sdf
 a14da240ffeffea703bc8b8fc4632eea *inst/compseq/bcl.sdf
@@ -144,10 +145,11 @@ a14da240ffeffea703bc8b8fc4632eea *inst/compseq/bcl.sdf
 ce55adfa3cdf3fadce3717560528f3d3 *inst/compseq/tyrphostin.sdf
 a46c0a32bc7aa91f8b297a590df3ab9e *inst/dnaseq/hs.fasta
 f3d59c074b56238293240326e3728a7c *inst/dnaseq/neg.fasta
+c855046b312bba40573e2f950b2a1899 *inst/dnaseq/non-hs.fasta
 447e997a1b21155211efcdcda559ad89 *inst/dnaseq/pos.fasta
-39fa7d8f8e97b1809c4a2ad1a93a5bce *inst/doc/BioMedR.Rnw
+e84fe2cd681cece4f8660bf5d4eb7f04 *inst/doc/BioMedR.Rnw
 d9101d1a0c00f382fc857139b417d600 *inst/doc/BioMedR.bib
-a29f6fbcd244eec4608cc15108f785c8 *inst/doc/BioMedR.pdf
+d335affb0e83f4d1aef78efc5326919d *inst/doc/BioMedR.pdf
 ca35c56c0c379f292f8fab68b3a19f61 *inst/examples/BioMedR-package-ex.R
 ca7df8eb66eb741ea44d8cf18eb2b90a *inst/protseq/1atp.pdb
 4a16b7ca86e201cec2c42382c4445180 *inst/protseq/P00750.fasta
@@ -182,6 +184,8 @@ be6eadb0c7581ebe99e6ffbd46c66ccc *inst/vignettedata/CPDBAS.smi
 61b550dea7417a1b0cfc0ee0b9e3923f *inst/vignettedata/FDAMDD.csv
 b64370ec92ba1f43b9e105db54f6af2a *inst/vignettedata/FDAMDD.smi
 8150b50c5396b8915a0c81fc60fd2c8a *inst/vignettedata/GPCR.csv
+8610868fb64dbafb2127ad3cefd9cef3 *inst/vignettedata/GPCR_seq.fasta
+d4d61d77661c1ff1456bcc6bf4753753 *inst/vignettedata/GPCR_smi.txt
 ae6fff5a4d2423bae24ff60f629f00b5 *inst/vignettedata/H_sapiens_neg.fasta
 b4b37594bc6157b705b14e595276cc7d *inst/vignettedata/H_sapiens_pos.fasta
 ecf8c4e76ea72ed89cd308351cffafe1 *inst/vignettedata/Nuclear.fasta
@@ -241,9 +245,10 @@ d0364c90ada94c402312a62fbad93040 *man/calcTwoProtGOSim.Rd
 498fb0cec0532cd7d3552ac78deb769c *man/calcTwoProtSeqSim.Rd
 90ce2cf0f64fa58bdf5f1f24bd39dcd6 *man/checkDNA.Rd
 bea1bee367405753b1ddf976c66b58cb *man/checkProt.Rd
-21f4efdb246aa155c301bffeddd662d4 *man/clusterCMP.Rd
+d2fe358c397767b3d46771fdbc3d8c06 *man/clusterCMP.Rd
 3cb7df7d668c5c216af56d67ae132009 *man/clusterJP.Rd
 dbdb11d626b10af57ac618976cce6e3c *man/clusterMDS.Rd
+a89aba6c6b501c545100ae4a792c4130 *man/clusterPlotSOMmap.Rd
 12a414502b3eb49880267050103789c0 *man/clusterStat.Rd
 7c265dd136858bf484d056b86c045bfd *man/connectivity.Rd
 a71b7ad98ee11daeebb7c523872fc165 *man/convAPtoFP.Rd
@@ -273,7 +278,7 @@ c906f4f5528bd99bc64fdffb5fbc60d0 *man/extrDrugHybridization.Rd
 fd1897f879028fe400f1dd33dab416c5 *man/extrDrugHybridizationComplete.Rd
 d2089b3740df5801c8da71d49179b278 *man/extrDrugHybridizationRatio.Rd
 64b0880c6760918292b1d66c7b0416e3 *man/extrDrugIPMolecularLearning.Rd
-93c399d874a6d93d3366e1ee7485873b *man/extrDrugKR.Rd
+ffe076b7c5d761e125e5df8b007eb063 *man/extrDrugKR.Rd
 81829e7d8d9c5ef76e71c590dfb06c80 *man/extrDrugKRComplete.Rd
 651f1dd617f90d20f2fefd05987ac1e5 *man/extrDrugKappaShapeIndices.Rd
 9390b55b89dfc55d438af3c1534d2e1f *man/extrDrugKierHallSmarts.Rd
@@ -326,7 +331,7 @@ e3f1606d462658f2f06de56ffeb8936b *man/parGOSim.Rd
 723c5398ff38607db63a40f01aba201a *man/parSeqSim.Rd
 314042e0418bd40e3058c89f249524c9 *man/plotStructure.Rd
 925df57d4d4bc11d2fed401c90e0c7a8 *man/pls.cv.Rd
-f06b89a647b9027b3c9f9f44829bc334 *man/property.Rd
+e02f28c934ee4f526c23d51c9eb9dd21 *man/property.Rd
 c58738632438cb3e1f1477a21374978f *man/readFASTA.Rd
 d182f192954654f367734cf6cdb08a7f *man/readMolFromSDF.Rd
 c0e5dc59c42b2bb01cd0a1e1d156df49 *man/readMolFromSmi.Rd
@@ -337,11 +342,12 @@ eb9ca6bfe29c575aa441cc4e5a461a28 *man/rf.cv.Rd
 0a91a32bfd1fd998e53760189c3b296f *man/sdfbcl.Rd
 c7f282990ee8ff107c45b074073ebf0e *man/searchDrug.Rd
 fc8f2c1f705b121466318ab076f5f8f5 *man/segProt.Rd
+c8c39a92c16115673b436c9bfd02d97e *man/som.bcl.Rd
 56ceb2e1691beadde779f83cf045e5ed *man/topology.Rd
 2b25d872ae6897f205620fd0e6041668 *man/twoGOSim.Rd
 5a189581a8144818197776f6a643845b *man/twoSeqSim.Rd
 668dd996d3d388d8f09927aecdb9f2e3 *tests/runTests.R
-39fa7d8f8e97b1809c4a2ad1a93a5bce *vignettes/BioMedR.Rnw
+e84fe2cd681cece4f8660bf5d4eb7f04 *vignettes/BioMedR.Rnw
 d9101d1a0c00f382fc857139b417d600 *vignettes/BioMedR.bib
 24117eed39299675686d5533b15e4cf6 *vignettes/fig/CTD.pdf
 eacbe38823569968d7e4413412fc9cab *vignettes/fig/PAAC.png
@@ -355,7 +361,7 @@ c9f76f59b566f39096511b2f15147987 *vignettes/fig/ex3-1.pdf
 fe5213303fa9b8f125c98acd1723b96f *vignettes/fig/ex4-2.pdf
 2ecced72f3dcee6a3726a795dd4e079c *vignettes/fig/ex5-1.pdf
 8408548ca203712f693f7302704bfda2 *vignettes/fig/ex6-1.pdf
-96056e82345551be4f7f702405d35ea3 *vignettes/fig/ex7-2.pdf
+45661233a19e22c8cfdd1b6d50a2fc69 *vignettes/fig/ex7-2.pdf
 909d7c3ef95eca552daadc4116caf3de *vignettes/fig/logo-panel-text.pdf
 77993366419a80415ed2b53f78801b08 *vignettes/fig/mds.pdf
-47a01a0cc3635b2ed6cf245833bda7a8 *vignettes/fig/somplot.pdf
+ecf969bdbdc76ea7237ef11908c5ea20 *vignettes/fig/somplot.pdf
